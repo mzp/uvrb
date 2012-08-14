@@ -3,7 +3,15 @@ require 'ffi'
 module UV
   extend FFI::Library
   FFI::DEBUG = 10
-  ffi_lib(FFI::Library::LIBC).first
+
+  ffi_lib(FFI::Library::LIBC)
+  # memory management
+  attach_function :malloc, [:size_t], :pointer
+  attach_function :free, [:pointer], :void
+
+  ffi_lib("Ws2_32.dll") if FFI::Platform.windows?
+  attach_function :ntohs, [:ushort], :ushort
+
   begin
     # bias the library discovery to a path inside the gem first, then
     # to the usual system paths
@@ -208,11 +216,6 @@ module UV
   attach_function :once, :uv_once, [:uv_once_t, :uv_cb], :void
   attach_function :thread_create, :uv_thread_create, [:uv_thread_t, :uv_cb], :int
   attach_function :thread_join, :uv_thread_join, [:uv_thread_t], :int
-
-  # memory management
-  attach_function :malloc, [:size_t], :pointer
-  attach_function :free, [:pointer], :void
-  attach_function :ntohs, [:ushort], :ushort
 
   attach_function :handle_size, :uv_handle_size, [:uv_handle_type], :size_t
   attach_function :req_size, :uv_req_size, [:uv_req_type], :size_t
