@@ -149,7 +149,7 @@ module UV
   attach_function :free_interface_addresses, :uv_free_interface_addresses, [:uv_interface_address_t, :int], :void
 
 #  attach_function :fs_req_result, :uv_fs_req_result, [:uv_fs_t], :ssize_t
-  attach_function :fs_req_stat, :uv_fs_req_stat, [:uv_fs_t], :uv_fs_stat_t
+#  attach_function :fs_req_stat, :uv_fs_req_stat, [:uv_fs_t], :uv_fs_stat_t
 #  attach_function :fs_req_pointer, :uv_fs_req_pointer, [:uv_fs_t], :pointer
 
   attach_function :fs_req_cleanup, :uv_fs_req_cleanup, [:uv_fs_t], :void
