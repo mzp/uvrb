@@ -126,8 +126,8 @@ module UV
   attach_function :timer_set_repeat, :uv_timer_set_repeat, [:uv_timer_t, :int64_t], :void
   attach_function :timer_get_repeat, :uv_timer_get_repeat, [:uv_timer_t], :int64_t
 
-  attach_function :ares_init_options, :uv_ares_init_options, [:uv_loop_t, :ares_channel, :ares_options, :int], :int
-  attach_function :ares_destroy, :uv_ares_destroy, [:uv_loop_t, :ares_channel], :void
+#  attach_function :ares_init_options, :uv_ares_init_options, [:uv_loop_t, :ares_channel, :ares_options, :int], :int
+#  attach_function :ares_destroy, :uv_ares_destroy, [:uv_loop_t, :ares_channel], :void
 
   attach_function :getaddrinfo, :uv_getaddrinfo, [:uv_loop_t, :uv_getaddrinfo_t, :uv_getaddrinfo_cb, :string, :string, :addrinfo], :int
   attach_function :freeaddrinfo, :uv_freeaddrinfo, [:addrinfo], :void
